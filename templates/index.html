@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bottle Profit Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>🧴 Bottle Profit Calculator</h1>
+
+    <form method="post" class="form">
+        <input type="number" name="buy_price" placeholder="Buy Price (₹)" step="0.01" required>
+        <input type="number" name="mrp_price" placeholder="MRP Price (₹)" step="0.01" required>
+        <input type="number" name="discount" placeholder="Discount (%)" step="0.01" required>
+        <input type="number" name="bottles" placeholder="No. of Bottles Sold" required>
+        <input type="number" name="free_bottles" placeholder="Free Bottles Given" required>
+        <button type="submit">Calculate Profit</button>
+    </form>
+
+    {% if result %}
+    <div class="card">
+        <h2>📊 Result</h2>
+        <p><strong>Sell Price (after discount):</strong> ₹{{ result.sell_price }}</p>
+        <p><strong>Total Revenue:</strong> ₹{{ result.total_revenue }}</p>
+        <p><strong>Total Buy Cost:</strong> ₹{{ result.total_cost }}</p>
+        <p><strong>Profit:</strong> ₹{{ result.profit }}</p>
+        <p><strong>Profit %:</strong> {{ result.profit_percent }}%</p>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
